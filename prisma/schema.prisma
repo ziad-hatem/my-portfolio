@@ -1,0 +1,132 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id             String           @id @default(uuid())
+  email          String           @unique
+  name           String?
+  position       String?
+  image          String?
+  phoneNumber    String?
+  linkedinUrl    String?
+  location       String?
+  aboutMe        AboutMe?
+  whatIDo        WhatIDo[]
+  education      Education[]
+  workExperience WorkExperience[]
+  projects      Projects[]
+  contact        Contact[]
+  mySkills       MySkills[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@index([id])
+}
+
+model AboutMe {
+  id                String    @id @default(uuid())
+  description       String @db.Text
+  yearsOfExperience Int?
+  trainingCourses   Int?
+  awardsCertificates Int?
+  userId            String @unique
+  user              User   @relation(fields: [userId], references: [id])
+}
+
+model WhatIDo {
+  id        Int      @id @default(autoincrement())
+  title     String
+  text      String @db.Text
+  userId    String  
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([userId])
+}
+
+model Education {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  startDate   DateTime
+  endDate     DateTime
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+    @@index([userId])
+}
+
+model WorkExperience {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  startDate   DateTime
+  endDate     String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+    @@index([userId])
+}
+
+model Projects {
+  id          String         @id @default(uuid())
+  title       String
+  youtubeUrl  String
+  imageUrl    String
+  projectUrl  String
+  linkedinUrl String @db.Text
+  githubUrl   String
+  technologies Technology[]  @relation("ProjectTechnologies")
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+    @@index([userId])
+}
+
+model Technology {
+  id        String      @id @default(uuid())
+  name      String
+  icon      String
+  project  Projects[]  @relation("ProjectTechnologies")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contact {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  phoneNumber String
+  message     String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+    @@index([userId])
+}
+
+
+model MySkills {
+  id       String  @id @default(uuid())
+  name     String
+  icon     String
+  userId   String
+  user     User    @relation(fields: [userId], references: [id])
+  @@index([userId])
+}
