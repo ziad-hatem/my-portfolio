@@ -4,6 +4,7 @@ import { User } from "@prisma/client";
 import { MailIcon, MapPinIcon, PhoneIcon, RocketIcon } from "lucide-react";
 import Link from "next/link";
 import ImageLoader from "./image-loader";
+import Image from "next/image";
 
 export const Contact = ({ phoneNumber = "", email = "", location = "" }) => {
   const href = phoneNumber
@@ -39,7 +40,13 @@ const Sidebar = ({ data }: { data: User | null }) => {
   return (
     <div className="bg-[#1E1E1F] md:w-[280px] md:h-[550px] rounded-[20px] pt-[25px]">
       <div className="image md:w-[130px] md:h-[130px] rounded-[15px] overflow-hidden mx-auto">
-        <ImageLoader src={data?.image || ""} />
+        <Image
+          src={data?.image || ""}
+          width={100}
+          height={100}
+          alt="Profile Img"
+          className="object-fill"
+        />
       </div>
       <div className="name mt-[20px]">
         <h1 className="text-white text-[20px] text-center">{data?.name}</h1>

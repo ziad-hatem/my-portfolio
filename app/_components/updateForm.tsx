@@ -21,6 +21,7 @@ import toast from "react-hot-toast";
 import { User } from "@prisma/client";
 import Image from "next/image";
 import ImageLoader from "./image-loader";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   image: z.any(),
@@ -34,7 +35,7 @@ const formSchema = z.object({
 
 function UpdateForm({ defaultValues }: { defaultValues: any }) {
   const [submitting, setSubmitting] = useState(false);
-  const [image, setImage] = useState<string | null>(defaultValues.image || "");
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,8 +49,6 @@ function UpdateForm({ defaultValues }: { defaultValues: any }) {
     },
   });
 
-  console.log(defaultValues);
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setSubmitting(true);
@@ -60,27 +59,17 @@ function UpdateForm({ defaultValues }: { defaultValues: any }) {
         },
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/x-www-form-urlencoded",
           },
         }
       );
-      const data = await response.data;
-      console.log(data);
       toast.success("Data Updated successfully");
+      router.push("/backend");
     } catch (error) {
       console.log(error);
       toast.error("Error Update data");
     } finally {
       setSubmitting(false);
-    }
-  };
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setImage(URL.createObjectURL(file));
-    } else {
-      setImage(null);
     }
   };
 
@@ -95,20 +84,14 @@ function UpdateForm({ defaultValues }: { defaultValues: any }) {
           control={form.control}
           name="image"
           render={({ field }) => {
-            const { onChange, ref } = field;
             return (
               <FormItem className="w-[300px] px-3">
                 <FormLabel>Profile picture</FormLabel>
                 <FormControl>
-                  <Input
-                    type="file"
-                    name="image"
-                    accept="image/*"
-                    onChange={(e) => {
-                      handleImageChange(e);
-                      onChange(e.target.files);
-                    }}
-                    ref={ref}
+                  <FileUpload
+                    apiEndpoint="imageUploader"
+                    value={field.value}
+                    onChange={(files) => field.onChange(files)}
                   />
                 </FormControl>
                 <FormMessage />
@@ -116,11 +99,6 @@ function UpdateForm({ defaultValues }: { defaultValues: any }) {
             );
           }}
         />
-        {image && (
-          <div className="w-[300px] px-3">
-            <ImageLoader src={image} />
-          </div>
-        )}
         <FormField
           control={form.control}
           name="position"

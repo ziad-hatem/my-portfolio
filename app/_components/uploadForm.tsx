@@ -19,6 +19,7 @@ import FileUpload from "./file-upload";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   image: z.any(),
@@ -32,8 +33,7 @@ const formSchema = z.object({
 
 function UploadForm() {
   const [submitting, setSubmitting] = useState(false);
-  const [image, setImage] = useState<string | null>(null);
-
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,6 +56,7 @@ function UploadForm() {
         },
       });
       toast.success("Data added successfully");
+      router.push("/backend");
     } catch (error) {
       console.log(error);
       toast.error("Error adding data");
