@@ -232,8 +232,8 @@ export function EditProject() {
         <TechnologyForProject
           addedTechs={addedTechs}
           setAddedTechs={setAddedTechs}
-          setSelectedTech={setSelectedTech}
-          selectedTech={selectedTech}
+          // setSelectedTech={setSelectedTech}
+          // selectedTech={selectedTech}
         />
 
         <Button type="submit" disabled={loading}>
