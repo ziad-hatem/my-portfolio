@@ -2,18 +2,8 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 const isProtectedRoute = createRouteMatcher(["/backend(.*)"]);
-const isPostRequest = (req: any) => req.method === "POST";
-const isBlockedPostRoute = createRouteMatcher(["/api(.*)"]);
 
 export default clerkMiddleware((auth, req) => {
-  const user = auth();
-
-  if (isBlockedPostRoute(req) && isPostRequest(req)) {
-    if (!user) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
-  }
-
   if (!auth().userId && isProtectedRoute(req)) {
     return auth().redirectToSignIn();
   }

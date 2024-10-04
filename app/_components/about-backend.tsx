@@ -60,7 +60,7 @@ export function AboutBackend({ defaultData }: { defaultData?: any }) {
   }
 
   return (
-    <>
+    <div>
       <Form {...form}>
         <form
           noValidate
@@ -138,6 +138,6 @@ export function AboutBackend({ defaultData }: { defaultData?: any }) {
         </form>
       </Form>
       <EditWhatImDoing data={defaultData?.whatIDo} />
-    </>
+    </div>
   );
 }

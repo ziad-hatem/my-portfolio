@@ -27,7 +27,7 @@ export const getColumns = ({
   setIsEdit,
   setDetailData,
   data,
-}: ColumnsProps): ColumnDef<Education>[] => [
+}: any): ColumnDef<any>[] => [
   {
     accessorKey: "id",
     header: "Id",
@@ -74,7 +74,7 @@ export const getColumns = ({
             <DropdownMenuItem
               onClick={() => {
                 const detailData = data.filter(
-                  (item) => item.id === row.original.id
+                  (item: any) => item.id === row.original.id
                 );
                 setDetailData(detailData[0]);
                 setIsEdit(true);

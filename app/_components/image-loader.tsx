@@ -18,7 +18,7 @@ const ImageLoader = ({ src }: { src: string | null }) => {
     if (quality) props.push(`q=${quality}`);
     const queryString = props.join("&");
 
-    return `http://localhost:3000/api/user/image?src=${src}&${queryString}`;
+    return `${process.env.NEXT_PUBLIC_URL}/api/user/image?src=${src}&${queryString}`;
   };
 
   return (
