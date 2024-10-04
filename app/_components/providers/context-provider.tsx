@@ -27,7 +27,7 @@ const MyContext = createContext<MyContextType | undefined>(undefined);
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
   const [showContacts, setShowContacts] = useState(false);
-  const [active, setActiveState] = useState("contact");
+  const [active, setActiveState] = useState("about");
   const [userData, setUserData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [animateExitDirection, setAnimateExitDirection] = useState<
