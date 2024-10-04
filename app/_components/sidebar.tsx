@@ -3,7 +3,6 @@
 import { User } from "@prisma/client";
 import { MailIcon, MapPinIcon, PhoneIcon, RocketIcon } from "lucide-react";
 import Link from "next/link";
-import ImageLoader from "./image-loader";
 import Image from "next/image";
 
 export const Contact = ({ phoneNumber = "", email = "", location = "" }) => {

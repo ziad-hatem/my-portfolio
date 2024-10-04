@@ -2,7 +2,6 @@ import { db } from "@/utils/db";
 import Image from "next/image";
 import ShowContacts from "./show-contacts";
 import MobileSidebarContacts from "./mobile-sidebar-contact";
-import ImageLoader from "./image-loader";
 
 const MobileSidebar = ({ data }: { data: any }) => {
   if (!data) return null;

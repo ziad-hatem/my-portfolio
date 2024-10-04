@@ -20,7 +20,6 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { User } from "@prisma/client";
 import Image from "next/image";
-import ImageLoader from "./image-loader";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
@@ -140,7 +139,6 @@ function UpdateForm({ defaultValues }: { defaultValues: any }) {
               <FormControl>
                 <Input type="email" placeholder="Email" {...field} />
               </FormControl>
-              <FormDescription></FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -169,7 +167,6 @@ function UpdateForm({ defaultValues }: { defaultValues: any }) {
               <FormControl>
                 <Input placeholder="" {...field} />
               </FormControl>
-              <FormDescription></FormDescription>
               <FormMessage />
             </FormItem>
           )}

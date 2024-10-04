@@ -2,8 +2,14 @@ import { db } from "@/utils/db";
 
 export async function GET(req: Request) {
   try {
-    const email = await req.url.split("email=")[1];
+    const url = new URL(req.url);
+    const email = url.searchParams.get("email");
 
+    if (!email) {
+      return new Response("Email query parameter is missing", {
+        status: 400,
+      });
+    }
     const user = await db.user.findUnique({
       where: { email },
       include: {
@@ -26,7 +32,7 @@ export async function GET(req: Request) {
 
     return Response.json({ user: user }, { status: 200 });
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching user data:", error);
     return new Response("Error GET data", { status: 500 });
   }
 }
