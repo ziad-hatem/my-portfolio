@@ -28,8 +28,6 @@ const TechnologyForProject = ({
 }: {
   addedTechs: any;
   setAddedTechs: any;
-  selectedTech: any;
-  setSelectedTech: any;
 }) => {
   const { userData } = useContextProvider();
   const [selectedTech, setSelectedTech] = useState<string>("");
