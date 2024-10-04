@@ -56,7 +56,6 @@ function UploadForm() {
         },
       });
       const data = await response.data;
-      console.log(data);
       toast.success("Data added successfully");
     } catch (error) {
       console.log(error);

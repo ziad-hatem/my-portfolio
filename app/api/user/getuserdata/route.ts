@@ -3,7 +3,6 @@ import { db } from "@/utils/db";
 export async function GET(req: Request) {
   try {
     const email = await req.url.split("email=")[1];
-    console.log(email);
 
     const user = await db.user.findUnique({
       where: { email },

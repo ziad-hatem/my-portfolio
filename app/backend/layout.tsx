@@ -5,6 +5,7 @@ import { Laila } from "next/font/google";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import "../globals.css";
+import { Toaster } from "react-hot-toast";
 const laila = Laila({
   subsets: ["latin"],
   variable: "--font-laila",
@@ -31,6 +32,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${laila.variable} antialiased relative`}>
         {children}
+        <Toaster />
       </body>
     </html>
   );
