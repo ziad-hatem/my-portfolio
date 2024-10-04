@@ -34,8 +34,8 @@ export const Box = ({
         className="w-[50px] h-[50px]"
       />
       <div>
-        <h1 className="text-white text-md">{header}+</h1>
-        <p className="text-[#bfbfbf] text-sm">{text}</p>
+        <h1 className="text-white text-sm md:text-md">{header}+</h1>
+        <p className="text-[#bfbfbf] text-xs md:text-sm">{text}</p>
       </div>
     </div>
   );
@@ -68,7 +68,7 @@ export const WhatImDoing = ({ data }: any) => {
 
 const About = ({ data }: { data: any }) => {
   return (
-    <div className="w-full h-fit relative flex flex-col max-lg:mt-12 pl-[25px] pb-4">
+    <div className="w-full h-fit relative flex flex-col max-lg:mt-12 pl-[15px] md:pl-[25px] pb-4">
       <div className="w-fit absolute top-[-30px] left-[25px]">
         <h1 className="text-white text-4xl mb-1">About</h1>
         <div
@@ -83,7 +83,7 @@ const About = ({ data }: { data: any }) => {
       >
         {data?.aboutMe?.description}
       </p>
-      <div className="flex flex-row flex-wrap justify-between gap-2 pr-3 mt-6">
+      <div className="flex flex-row flex-wrap justify-between gap-2 pr-3 w-[90%] mt-1 md:mt-6">
         <Box
           icon={icons.experience}
           header={data?.aboutMe?.yearsOfExperience || 0}
