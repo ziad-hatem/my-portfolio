@@ -28,7 +28,7 @@ const formSchema = z.object({
 });
 
 export function AboutBackend({ defaultData }: { defaultData?: any }) {
-  const { refreshRoutes } = useContextProvider();
+  const { refreshData } = useContextProvider();
   const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,7 +49,7 @@ export function AboutBackend({ defaultData }: { defaultData?: any }) {
           values
         );
         toast.success("Data added successfully");
-        refreshRoutes();
+        refreshData();
       } catch (error) {
         toast.error("Error adding data here");
       } finally {

@@ -14,7 +14,6 @@ import axios from "axios";
 
 export default function Home() {
   const { userData } = useContextProvider();
-  console.log(userData);
 
   return (
     <div className="relative bg-black flex flex-col max-lg:flex-col-reverse max-lg:gap-5 justify-center min-h-full pb-[100px] pt-[100px]">

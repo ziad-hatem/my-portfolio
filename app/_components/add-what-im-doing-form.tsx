@@ -45,7 +45,7 @@ function Component({
   details?: WhatIDo | null;
   setIsEdit: (isEdit: boolean) => void;
 }) {
-  const { userData, refreshRoutes } = useContextProvider();
+  const { userData, refreshData } = useContextProvider();
   const [loading, setLoading] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -84,7 +84,7 @@ function Component({
       toast.success("Data added successfully");
       setLoading(false);
       isEdit ? setIsEdit(false) : setOpen(false);
-      refreshRoutes();
+      refreshData();
     } else {
       setLoading(false);
       toast.error(response.statusText);

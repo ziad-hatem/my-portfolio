@@ -4,8 +4,8 @@ import { Laila } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { ContextProvider } from "./_components/providers/context-provider";
 import { ThemeProvider } from "./_components/providers/theme-provider";
-import "./globals.css";
 
+import "./globals.css";
 const laila = Laila({
   subsets: ["latin"],
   variable: "--font-laila",
