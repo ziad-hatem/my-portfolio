@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 export async function POST(req: Request) {
   try {
     const data = await req.formData();
-    const image = data.get("image[]");
+    const image = data.get("image");
     const name = data.get("name");
     const position = data.get("position");
     const email = data.get("email");
@@ -25,39 +25,9 @@ export async function POST(req: Request) {
       });
     }
 
-    if (!image || !(image instanceof Blob)) {
-      return Response.json({ message: "No image provided" }, { status: 400 });
-    }
-    const buffer = await image.arrayBuffer();
-    const filename = image.name || "image";
-    const fileExtension = path.extname(filename);
-    const baseFilename = path.basename(filename, fileExtension);
-    const uniqueId = uuidv4();
-    const newImageName = `${uniqueId}${fileExtension}`;
-    const newImageNameThumbnail = `${uniqueId}-thumbnail`;
-
-    const originalPath = path.join(
-      process.cwd(),
-      `/public/upload/${newImageName}`
-    );
-    fs.writeFileSync(originalPath, Buffer.from(buffer));
-    const sharp = (await import("sharp")).default;
-
-    const thumbnailBuffer = await sharp(Buffer.from(buffer))
-      .blur(1)
-      .resize(10)
-      .toBuffer();
-
-    const thumbnailPath = path.join(
-      process.cwd(),
-      `/public/upload/${newImageNameThumbnail}${fileExtension}`
-    );
-    fs.writeFileSync(thumbnailPath, thumbnailBuffer);
-    const imgPath = `/public/upload/${newImageName}`;
-
     const user = await db.user.create({
       data: {
-        image: imgPath,
+        image: image as string,
         name: name as string,
         position: position as string,
         email: email as string,

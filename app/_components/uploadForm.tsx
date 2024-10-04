@@ -52,25 +52,15 @@ function UploadForm() {
       setSubmitting(true);
       const response = await axios.post("/api/addData", values, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
       });
-      const data = await response.data;
       toast.success("Data added successfully");
     } catch (error) {
       console.log(error);
       toast.error("Error adding data");
     } finally {
       setSubmitting(false);
-    }
-  };
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setImage(URL.createObjectURL(file));
-    } else {
-      setImage(null);
     }
   };
 
@@ -85,20 +75,14 @@ function UploadForm() {
           control={form.control}
           name="image"
           render={({ field }) => {
-            const { onChange, ref } = field;
             return (
               <FormItem className="w-[300px] px-3">
                 <FormLabel>Profile picture</FormLabel>
                 <FormControl>
-                  <Input
-                    type="file"
-                    name="image"
-                    accept="image/*"
-                    onChange={(e) => {
-                      handleImageChange(e);
-                      onChange(e.target.files);
-                    }}
-                    ref={ref}
+                  <FileUpload
+                    apiEndpoint="imageUploader"
+                    value={field.value}
+                    onChange={(files) => field.onChange(files)}
                   />
                 </FormControl>
                 <FormMessage />
@@ -106,15 +90,6 @@ function UploadForm() {
             );
           }}
         />
-        {image && (
-          <div className="w-[300px] px-3">
-            <img
-              src={image}
-              alt="Selected Image"
-              className="object-contain w-full h-auto"
-            />
-          </div>
-        )}
         <FormField
           control={form.control}
           name="position"
