@@ -28,11 +28,11 @@ import * as z from "zod";
 
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
-import { DatePickerWithRange } from "./DateRangePicker";
 import { DateRange } from "react-day-picker";
 import { addDays } from "date-fns";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { DateRangePicker } from "./DateRangePicker";
 
 const formSchema = z.object({
   university: z.string().min(1).max(255),
@@ -49,6 +49,10 @@ function Component({
   setIsEdit: (isEdit: boolean) => void;
 }) {
   const { userData, refreshData } = useContextProvider();
+  const defaultDate = {
+    from: new Date(),
+    to: addDays(new Date(), 30),
+  };
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 30),
@@ -72,7 +76,7 @@ function Component({
       date:
         isEdit && details
           ? setDate({ from: details.startDate, to: details.endDate })
-          : date,
+          : setDate(defaultDate),
     });
   }, [isEdit, details, reset, open]);
 
@@ -173,10 +177,13 @@ function Component({
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel>Date</FormLabel>
-                    <DatePickerWithRange
-                      date={date}
-                      setDate={setDate}
-                      className="rounded-md border"
+                    <DateRangePicker
+                      onUpdate={(values) => setDate(values.range)}
+                      initialDateFrom="2023-01-01"
+                      initialDateTo="2023-12-31"
+                      align="start"
+                      locale="en-US"
+                      showCompare={false}
                       {...field}
                     />
                     <FormDescription>

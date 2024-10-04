@@ -86,32 +86,18 @@ export function Technologies({ data }: { data: any }) {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows && table.getRowModel().rows.length > 0 ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() ? "selected" : undefined}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length ? columns.length : 0}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
+            {table.getRowModel().rows.map((row) => (
+              <TableRow
+                key={row.id}
+                data-state={row.getIsSelected() ? "selected" : undefined}
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
               </TableRow>
-            )}
+            ))}
           </TableBody>
         </Table>
       </div>

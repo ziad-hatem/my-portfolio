@@ -20,7 +20,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { WhatIDo, WorkExperience } from "@prisma/client";
 import { Loader2, Plus } from "lucide-react";
 import * as React from "react";
 import { useForm } from "react-hook-form";
@@ -31,7 +30,7 @@ import axios from "axios";
 import { addDays } from "date-fns";
 import { DateRange } from "react-day-picker";
 import toast from "react-hot-toast";
-import { DatePickerWithRange } from "./DateRangePicker";
+import { DateRangePicker } from "./DateRangePicker";
 
 const formSchema = z.object({
   title: z.string().min(1).max(255),
@@ -172,10 +171,13 @@ function Component({
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel>Date</FormLabel>
-                    <DatePickerWithRange
-                      date={date}
-                      setDate={setDate}
-                      className="rounded-md border"
+                    <DateRangePicker
+                      onUpdate={(values) => setDate(values.range)}
+                      initialDateFrom="2023-01-01"
+                      initialDateTo="2023-12-31"
+                      align="start"
+                      locale="en-US"
+                      showCompare={false}
                       {...field}
                     />
                     <FormDescription>

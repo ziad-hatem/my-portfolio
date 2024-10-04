@@ -64,7 +64,7 @@ const ProjectComponent = ({ data }: { data: any }) => {
     <Dialog>
       <DialogTrigger asChild className="cursor-pointer">
         <div className="flex gap-1 flex-col items-center group">
-          <div className="relative">
+          <div className="relative w-[100%] h-auto md:w-[200px]">
             <Image
               src={data.imageUrl}
               alt="Project Image"
@@ -72,7 +72,7 @@ const ProjectComponent = ({ data }: { data: any }) => {
               height={100}
               unoptimized
               loading="lazy"
-              className="object-fill w-[150px] h-auto aspect-video rounded-lg"
+              className="object-fill w-full aspect-video rounded-lg"
             />
             <div className="absolute transition-all top-1/2 left-1/2 -translate-x-1/2 z-10 -translate-y-1/2 opacity-0 group-hover:opacity-100">
               <div className="bg-black w-[40px] h-[40px] rounded-full bg-opacity-50 flex items-center justify-center">
@@ -84,7 +84,7 @@ const ProjectComponent = ({ data }: { data: any }) => {
             </div>
             <div className="bg-black w-full transition-all top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full absolute rounded-lg opacity-0 group-hover:opacity-30" />
           </div>
-          <p className="text-xs text-muted-foreground">{data.title}</p>
+          <p className="text-sm text-muted-foreground">{data.title}</p>
         </div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

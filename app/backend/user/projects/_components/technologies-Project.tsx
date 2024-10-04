@@ -25,10 +25,12 @@ interface AddedTech {
 const TechnologyForProject = ({
   addedTechs,
   setAddedTechs,
-  setSelectedTech,
-  selectedTech,
-}: any) => {
+}: {
+  addedTechs: any;
+  setAddedTechs: any;
+}) => {
   const { userData } = useContextProvider();
+  const [selectedTech, setSelectedTech] = useState<string>("");
 
   const handleAdd = () => {
     if (selectedTech) {
@@ -42,10 +44,10 @@ const TechnologyForProject = ({
           ...addedTechs,
           { id: tech.id, icon: tech.icon, name: tech.name },
         ]);
-        setSelectedTech(null);
+        setSelectedTech("");
       } else {
         toast.success("Technology already added");
-        setSelectedTech(null);
+        setSelectedTech("");
       }
     }
   };
@@ -62,7 +64,10 @@ const TechnologyForProject = ({
         Add Technologies you're used in your Project
       </h1>
       <div className="flex gap-2">
-        <Select onValueChange={(value) => setSelectedTech(value)}>
+        <Select
+          value={selectedTech}
+          onValueChange={(value) => setSelectedTech(value)}
+        >
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Select a technology" />
           </SelectTrigger>
