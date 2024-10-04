@@ -21,7 +21,7 @@ const Resume = () => {
       <div className="">
         <ExperienceComponent data={userData.workExperience} />
       </div>
-      <div>
+      <div className="pb-5">
         <MySkills data={userData.mySkills} />
       </div>
     </div>
