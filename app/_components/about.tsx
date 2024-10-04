@@ -76,14 +76,14 @@ const About = ({ data }: { data: any }) => {
         />
       </div>
       <p
-        className="text-white text-lg pr-3 mt-10 line"
+        className="text-white text-sm md:text-lg pr-3 mt-10 line"
         style={{
-          lineBreak: "anywhere",
+          lineBreak: "normal",
         }}
       >
         {data?.aboutMe?.description}
       </p>
-      <div className="flex flex-row flex-wrap justify-between gap-2 pr-3 w-[90%] mt-1 md:mt-6">
+      <div className="flex flex-row flex-wrap justify-between gap-2 pr-3 w-full mt-1 md:mt-6">
         <Box
           icon={icons.experience}
           header={data?.aboutMe?.yearsOfExperience || 0}
