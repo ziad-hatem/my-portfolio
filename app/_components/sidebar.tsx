@@ -1,7 +1,13 @@
 "use client";
 
 import { User } from "@prisma/client";
-import { MailIcon, MapPinIcon, PhoneIcon, RocketIcon } from "lucide-react";
+import {
+  Download,
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+  RocketIcon,
+} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -61,14 +67,23 @@ const Sidebar = ({ data }: { data: User | null }) => {
         <Contact phoneNumber={data?.phoneNumber || ""} />
         <Contact location={data?.location || ""} />
       </div>
-      <Link
-        href={`${data?.linkedinUrl}`}
-        target="_blank"
-        className="flex items-center group gap-2 mt-[30px] text-white text-[15px] w-fit font-bold mx-auto"
-      >
-        Follow Me
-        <RocketIcon className="w-5 h-5 text-white group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300" />
-      </Link>
+      <div className="flex w-[80%] mx-auto justify-around">
+        <Link
+          href={`${data?.linkedinUrl}`}
+          target="_blank"
+          className="flex items-center group gap-2 mt-[30px] text-white text-[15px] font-bold mx-auto"
+        >
+          Follow Me
+          <RocketIcon className="w-5 h-5 text-white group-hover:-translate-y-1 group-hover:translate-x-1 transition-all duration-300" />
+        </Link>
+        <Link
+          href={"/Ziad Hatem - CV.pdf"}
+          className="flex items-center group gap-2 mt-[30px] text-white text-[15px] font-bold mx-auto"
+        >
+          CV
+          <Download className="w-5 h-5 text-white group-hover:translate-y-1 transition-all duration-300" />
+        </Link>
+      </div>
     </div>
   );
 };
