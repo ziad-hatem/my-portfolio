@@ -15,7 +15,8 @@ const MobileSidebar = ({ data }: { data: any }) => {
             width={100}
             height={100}
             alt="Profile Img"
-            className="object-fill"
+            unoptimized
+            className="w-full"
           />
         </div>
 

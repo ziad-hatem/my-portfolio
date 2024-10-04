@@ -44,7 +44,8 @@ const Sidebar = ({ data }: { data: User | null }) => {
           width={100}
           height={100}
           alt="Profile Img"
-          className="object-fill"
+          unoptimized
+          className="w-full"
         />
       </div>
       <div className="name mt-[20px]">
