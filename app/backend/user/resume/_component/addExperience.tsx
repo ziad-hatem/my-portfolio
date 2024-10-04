@@ -87,7 +87,7 @@ function Component({
       try {
         setLoading(true);
         await axios.patch(
-          "/api/user/addexperience?email=ziadhatem2022@gmail.com",
+          "/api/user/addexperience?email=ziadhatemdev@gmail.com",
           formattedValues
         );
         toast.success("Update Experience Success");
@@ -103,7 +103,7 @@ function Component({
       try {
         setLoading(true);
         await axios.post(
-          "/api/user/addexperience?email=ziadhatem2022@gmail.com",
+          "/api/user/addexperience?email=ziadhatemdev@gmail.com",
           formattedValues
         );
         toast.success("Add Experience Success");

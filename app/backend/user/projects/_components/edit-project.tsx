@@ -99,7 +99,7 @@ export function EditProject() {
 
     try {
       const response = await axios.patch(
-        "/api/user/project?email=ziadhatem2022@gmail.com",
+        "/api/user/project?email=ziadhatemdev@gmail.com",
         formattedValues
       );
       toast.success("Project updated successfully", { id: loadingToast });

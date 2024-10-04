@@ -56,7 +56,7 @@ export function CreateProject() {
 
     try {
       const response = await axios.post(
-        "/api/user/project?email=ziadhatem2022@gmail.com",
+        "/api/user/project?email=ziadhatemdev@gmail.com",
         formattedValues
       );
       toast.success("Project created successfully");

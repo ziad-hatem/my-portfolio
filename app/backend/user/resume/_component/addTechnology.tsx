@@ -79,7 +79,7 @@ function Component({
       if (isEdit) {
         setLoading(true);
         await axios.patch(
-          "/api/user/myskills?email=ziadhatem2022@gmail.com",
+          "/api/user/myskills?email=ziadhatemdev@gmail.com",
           formattedValues
         );
         toast.success("Update Skills Success");
@@ -88,7 +88,7 @@ function Component({
       } else {
         setLoading(true);
         await axios.post(
-          "/api/user/myskills?email=ziadhatem2022@gmail.com",
+          "/api/user/myskills?email=ziadhatemdev@gmail.com",
           formattedValues
         );
         toast.success("Add Skills Success");

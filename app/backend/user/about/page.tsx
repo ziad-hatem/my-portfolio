@@ -16,7 +16,7 @@ const page = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "/api/user/getuserdata?email=ziadhatem2022@gmail.com"
+          "/api/user/getuserdata?email=ziadhatemdev@gmail.com"
         );
         const data = response.data;
         setUserData(data.user);

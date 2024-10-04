@@ -33,7 +33,7 @@ const ImageLoader = ({ src }: { src: string | null }) => {
           src={src || ""}
           className={`object-contain w-full h-full`}
           loader={({ src }) =>
-            `http://localhost:3000/api/user/image?src=${src}&thumbnail=true`
+            `${process.env.NEXT_PUBLIC_URL}/api/user/image?src=${src}&thumbnail=true`
           }
         />
       )}

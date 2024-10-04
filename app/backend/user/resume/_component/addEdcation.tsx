@@ -88,7 +88,7 @@ function Component({
       try {
         setLoading(true);
         await axios.patch(
-          "/api/user/addeducation?email=ziadhatem2022@gmail.com",
+          "/api/user/addeducation?email=ziadhatemdev@gmail.com",
           formattedValues
         );
         toast.success("Update Education Success");
@@ -104,7 +104,7 @@ function Component({
       try {
         setLoading(true);
         await axios.post(
-          "/api/user/addeducation?email=ziadhatem2022@gmail.com",
+          "/api/user/addeducation?email=ziadhatemdev@gmail.com",
           formattedValues
         );
         toast.success("Add Education Success");

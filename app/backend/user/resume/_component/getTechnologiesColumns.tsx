@@ -94,7 +94,7 @@ export const getColumns = ({
               onClick={async () => {
                 try {
                   await axios.delete(
-                    "/api/user/myskills?email=ziadhatem2022@gmail.com",
+                    "/api/user/myskills?email=ziadhatemdev@gmail.com",
                     {
                       data: {
                         id: row.original.id,
