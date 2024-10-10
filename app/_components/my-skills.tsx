@@ -31,7 +31,7 @@ const MySkills = ({ data }: { data: SkillsProps[] }) => {
     <div className="mt-8 text-white pb-5">
       <Header />
 
-      <div className="mt-8 pr-4 w-full max-lg:justify-center flex gap-x-2 gap-y-[40px] flex-wrap">
+      <div className="mt-8 w-full max-lg:justify-center flex gap-x-[14px] gap-y-[40px] flex-wrap">
         {data.map((skill, index) => (
           <Skill key={index} skill={skill} />
         ))}

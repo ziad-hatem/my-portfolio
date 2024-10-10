@@ -41,6 +41,11 @@ export const Box = ({
   );
 };
 
+// const WhatImDoingIcons = {
+//   1: "/programming.png",
+//   2: "/development-software.png",
+// };
+
 export const WhatImDoing = ({ data }: any) => {
   return (
     <div
