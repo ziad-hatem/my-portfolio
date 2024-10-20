@@ -103,6 +103,13 @@ export const columns: ColumnDef<User>[] = [
             >
               Edit Resume
             </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                router.push(`/backend/user/projects`);
+              }}
+            >
+              Projects Page
+            </DropdownMenuItem>
             <DropdownMenuItem>Delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

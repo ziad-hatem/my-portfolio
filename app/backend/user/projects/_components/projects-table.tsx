@@ -89,6 +89,7 @@ export const columns: ColumnDef<Projects>[] = [
     accessorKey: "youtubeUrl",
     header: "Youtube",
     cell: ({ row }) => {
+      if (!row.getValue("youtubeUrl")) return;
       return (
         <div className="font-medium">
           <LiteYouTubeEmbed
@@ -105,7 +106,7 @@ export const columns: ColumnDef<Projects>[] = [
     cell: ({ row }) => {
       return (
         <div className="font-medium">
-          <Link target="_blank" href={row.getValue("youtubeUrl")}>
+          <Link target="_blank" href={row.getValue("projectUrl")}>
             <Button variant={"link"}>Preview</Button>
           </Link>
         </div>
@@ -116,6 +117,7 @@ export const columns: ColumnDef<Projects>[] = [
     accessorKey: "linkedinUrl",
     header: "Linkedin Url",
     cell: ({ row }) => {
+      if (!row.getValue("linkedinUrl")) return;
       return (
         <div className="font-medium">
           <Link target="_blank" href={row.getValue("linkedinUrl")}>
@@ -129,6 +131,7 @@ export const columns: ColumnDef<Projects>[] = [
     accessorKey: "githubUrl",
     header: "Github Url",
     cell: ({ row }) => {
+      if (!row.getValue("githubUrl")) return;
       return (
         <div className="font-medium">
           <Link target="_blank" href={row.getValue("githubUrl")}>
@@ -157,7 +160,7 @@ export const columns: ColumnDef<Projects>[] = [
                   alt="image"
                   className="w-[25px] h-[25px]"
                 />
-                <h1 className="text-white text-xs">{e.name}</h1>
+                <h1 className="text-black text-xs">{e.name}</h1>
               </li>
             ))}
           </ul>

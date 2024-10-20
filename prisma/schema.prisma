@@ -86,11 +86,11 @@ model WorkExperience {
 model Projects {
   id          String         @id @default(uuid())
   title       String
-  youtubeUrl  String
+  youtubeUrl  String?
   imageUrl    String
   projectUrl  String
-  linkedinUrl String @db.Text
-  githubUrl   String
+  linkedinUrl String? @db.Text
+  githubUrl   String?
   technologies Technology[]  @relation("ProjectTechnologies")
   userId      String
   user        User        @relation(fields: [userId], references: [id])

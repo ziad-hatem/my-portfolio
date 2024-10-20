@@ -26,11 +26,11 @@ export async function POST(req: Request) {
         projects: {
           create: {
             title,
-            youtubeUrl,
+            youtubeUrl: youtubeUrl ?? undefined,
             imageUrl,
             projectUrl,
-            linkedinUrl,
-            githubUrl,
+            linkedinUrl: linkedinUrl ?? undefined,
+            githubUrl: githubUrl ?? undefined,
             technologies: {
               create: res.technologies.map(
                 (technology: { icon: string; name: string }) => ({

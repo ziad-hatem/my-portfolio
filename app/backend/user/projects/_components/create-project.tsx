@@ -24,10 +24,10 @@ import { useContextProvider } from "@/app/_components/providers/context-provider
 const formSchema = z.object({
   title: z.string().min(1).max(255),
   imageUrl: z.any(),
-  youtubeUrl: z.string().min(1).max(255),
+  youtubeUrl: z.string().min(1).max(255).optional(),
   projectUrl: z.string().url().min(1).max(255),
-  linkedinUrl: z.string().url().min(1).max(400),
-  githubUrl: z.string().url().min(1).max(255),
+  linkedinUrl: z.string().url().min(1).max(400).optional(),
+  githubUrl: z.string().url().min(1).max(255).optional(),
 });
 
 export function CreateProject() {
@@ -40,10 +40,10 @@ export function CreateProject() {
     defaultValues: {
       title: "",
       imageUrl: "",
-      youtubeUrl: "",
+      youtubeUrl: undefined,
       projectUrl: "",
-      linkedinUrl: "",
-      githubUrl: "",
+      linkedinUrl: undefined,
+      githubUrl: undefined,
     },
   });
 
