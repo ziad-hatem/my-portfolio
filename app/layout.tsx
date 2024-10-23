@@ -13,8 +13,38 @@ const laila = Laila({
 });
 
 export const metadata: Metadata = {
-  title: "Ziad Hatem - Frontend DEV",
-  description: "Portfolio",
+  title: "Ziad Hatem - Frontend Developer Portfolio & React Specialist",
+  description:
+    "Explore the portfolio of Ziad Hatem, a Frontend Developer specializing in React.js, Next.js, and modern CSS frameworks. Check out my projects, technical skills, and experience in building SaaS platforms, LMS systems, and collaborative tools.",
+  keywords: [
+    "Ziad Hatem",
+    "Frontend Developer",
+    "React Developer",
+    "Next.js",
+    "Portfolio",
+    "JavaScript",
+    "SaaS development",
+    "Web Performance Optimization",
+    "Tailwind CSS",
+    "Open Source Projects",
+    "Clerk Integration",
+  ],
+  viewport: "width=device-width, initial-scale=1",
+  robots: "index, follow",
+  openGraph: {
+    title: "Ziad Hatem - Frontend Developer Portfolio",
+    description:
+      "Discover Ziad Hatem's work in modern web development with React and Next.js. View projects like SaaS platforms, LMS systems, and Figma-like tools.",
+    url: "https://ziadhatem-portfolio.vercel.app",
+    type: "website",
+    emails: "ziadhatemdev@gmail.com",
+    countryName: "Egypt",
+    phoneNumbers: "+20 1067609261",
+  },
+  authors: {
+    name: "Ziad Hatem",
+    url: "https://ziadhatem-portfolio.vercel.app",
+  },
 };
 
 export default function RootLayout({
@@ -24,6 +54,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Ziad Hatem" />
+        <meta
+          name="description"
+          content="Explore the portfolio of Ziad Hatem, a Frontend Developer specializing in React.js, Next.js, and modern CSS frameworks."
+        />
+        <meta
+          name="keywords"
+          content="Frontend Developer, React.js, Next.js, Portfolio, JavaScript, Web Performance Optimization, SaaS development"
+        />
+        <link rel="canonical" href="https://ziadhatem-portfolio.vercel.app" />
+        <title>Ziad Hatem - Frontend Developer Portfolio</title>
+        <meta
+          name="google-site-verification"
+          content="8vvXACQeiioH9qtrZe1FfNcOuL_8DAwTn01qM97vtHs"
+        />
+      </head>
       <body className={`${laila.variable} antialiased`}>
         <ClerkProvider>
           <ThemeProvider
