@@ -73,6 +73,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="8vvXACQeiioH9qtrZe1FfNcOuL_8DAwTn01qM97vtHs"
         />
+        <meta name="msvalidate.01" content="2884A001A41E5338A7C84F84CAED123A" />
       </head>
       <body className={`${laila.variable} antialiased`}>
         <ClerkProvider>
