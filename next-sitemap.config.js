@@ -1,6 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://your-portfolio-domain.com",
+  siteUrl:
+    process.env.NEXT_PUBLIC_APP_URL || "https://your-portfolio-domain.com",
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   changefreq: "weekly",
