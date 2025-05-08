@@ -14,8 +14,6 @@ interface HeroProps {
 }
 
 export default function Hero({ user }: HeroProps) {
-  console.log(user);
-
   const heroRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
