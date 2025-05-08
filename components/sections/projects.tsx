@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import type { Projects as ProjectType, Technology } from "@prisma/client"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import Image from "next/image"
-import Link from "next/link"
-import { ExternalLink, Github, Youtube } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import SectionHeading from "@/components/ui/section-heading"
+import { useEffect, useRef, useState } from "react";
+import type { Projects as ProjectType, Technology } from "@prisma/client";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import Link from "next/link";
+import { ExternalLink, Github, Youtube } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import SectionHeading from "@/components/ui/section-heading";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectsProps {
   projects: (ProjectType & {
-    technologies: Technology[]
-  })[]
+    technologies: Technology[];
+  })[];
 }
 
 export default function Projects({ projects }: ProjectsProps) {
-  const sectionRef = useRef<HTMLElement>(null)
-  const projectsRef = useRef<HTMLDivElement>(null)
-  const [visibleProjects, setVisibleProjects] = useState(6)
+  const sectionRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const [visibleProjects, setVisibleProjects] = useState(6);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -40,32 +40,35 @@ export default function Projects({ projects }: ProjectsProps) {
             trigger: projectsRef.current,
             start: "top 80%",
           },
-        },
-      )
-    }, sectionRef)
+        }
+      );
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [visibleProjects])
+    return () => ctx.revert();
+  }, [visibleProjects]);
 
-  if (!projects.length) return null
+  if (!projects.length) return null;
 
-  const displayedProjects = projects.slice(0, visibleProjects)
-  const hasMoreProjects = projects.length > visibleProjects
+  const displayedProjects = projects.slice(0, visibleProjects);
+  const hasMoreProjects = projects.length > visibleProjects;
 
   return (
     <section id="projects" ref={sectionRef} className="py-20 px-4">
       <div className="container mx-auto">
         <SectionHeading title="My Projects" subtitle="Recent work" />
 
-        <div ref={projectsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <div
+          ref={projectsRef}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
+        >
           {displayedProjects.map((project) => (
             <Card key={project.id} className="group overflow-hidden">
-              <div className="relative h-48 w-full overflow-hidden">
+              <div className="relative h-80 w-full overflow-hidden">
                 <Image
                   src={project.imageUrl || "/placeholder.svg"}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 h-auto w-full group-hover:scale-110"
                 />
               </div>
               <CardContent className="p-6">
@@ -78,12 +81,18 @@ export default function Projects({ projects }: ProjectsProps) {
                     </Badge>
                   ))}
                   {project.technologies.length > 3 && (
-                    <Badge variant="outline">+{project.technologies.length - 3}</Badge>
+                    <Badge variant="outline">
+                      +{project.technologies.length - 3}
+                    </Badge>
                   )}
                 </div>
 
                 <div className="flex gap-2 mt-4">
-                  <Link href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+                  <Link
+                    href={project.projectUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Button size="sm" variant="default">
                       <ExternalLink className="h-4 w-4 mr-2" />
                       View Project
@@ -91,7 +100,11 @@ export default function Projects({ projects }: ProjectsProps) {
                   </Link>
 
                   {project.githubUrl && (
-                    <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <Link
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Button size="sm" variant="outline">
                         <Github className="h-4 w-4" />
                         <span className="sr-only">GitHub</span>
@@ -100,7 +113,11 @@ export default function Projects({ projects }: ProjectsProps) {
                   )}
 
                   {project.youtubeUrl && (
-                    <Link href={project.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                    <Link
+                      href={project.youtubeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Button size="sm" variant="outline">
                         <Youtube className="h-4 w-4" />
                         <span className="sr-only">YouTube</span>
@@ -115,12 +132,15 @@ export default function Projects({ projects }: ProjectsProps) {
 
         {hasMoreProjects && (
           <div className="flex justify-center mt-12">
-            <Button onClick={() => setVisibleProjects((prev) => prev + 3)} variant="outline">
+            <Button
+              onClick={() => setVisibleProjects((prev) => prev + 3)}
+              variant="outline"
+            >
               Load More Projects
             </Button>
           </div>
         )}
       </div>
     </section>
-  )
+  );
 }
