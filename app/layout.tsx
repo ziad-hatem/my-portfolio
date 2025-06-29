@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -91,6 +92,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-32NTDS8RLH"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-32NTDS8RLH');
+          `}
+        </Script>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
