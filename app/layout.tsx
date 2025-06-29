@@ -104,6 +104,42 @@ export default function RootLayout({
             gtag('config', 'G-32NTDS8RLH');
           `}
         </Script>
+
+        {/* Iubenda Cookie Solution */}
+        <Script id="iubenda-config" strategy="afterInteractive">
+          {`
+            var _iub = _iub || [];
+            _iub.csConfiguration = {"siteId":4130334,"cookiePolicyId":61768967,"lang":"en","storage":{"useSiteId":true}};
+          `}
+        </Script>
+        <Script
+          src="https://cs.iubenda.com/autoblocking/4130334.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="//cdn.iubenda.com/cs/gpp/stub.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="//cdn.iubenda.com/cs/iubenda_cs.js"
+          strategy="afterInteractive"
+          async
+        />
+
+        {/* Iubenda Consent Solution */}
+        <Script id="iubenda-cons-config" strategy="afterInteractive">
+          {`
+            var _iub = _iub || {}; 
+            _iub.cons_instructions = _iub.cons_instructions || []; 
+            _iub.cons_instructions.push(["init", {api_key: "vm0UVyofUWgSDbSmLuOcREukUCGpgTYl"}]);
+          `}
+        </Script>
+        <Script
+          src="https://cdn.iubenda.com/cons/iubenda_cons.js"
+          strategy="afterInteractive"
+          async
+        />
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
